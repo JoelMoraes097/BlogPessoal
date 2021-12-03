@@ -2,6 +2,8 @@ package org.Generation.BlogPessoal.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.Generation.BlogPessoal.model.Postagem;
 import org.Generation.BlogPessoal.repository.PostagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class PostagemController {
 	@Autowired
 	private PostagemRepository repository;
 
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<List<Postagem>> GetAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
@@ -36,21 +38,22 @@ public class PostagemController {
 	}
 
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo) {
+	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
-	@PostMapping
-	public ResponseEntity<Postagem> post(@RequestBody Postagem postagem) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
+	@PostMapping("/post")
+	public ResponseEntity<Postagem> post(@Valid @RequestBody Postagem newUser) {
+		return ResponseEntity.status(201).body(repository.save(newUser));
+
 	}
 
-	@PutMapping
-	public ResponseEntity<Postagem> put(@RequestBody Postagem postagem) {
+	@PutMapping ("/put")
+	public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
 		return ResponseEntity.status(201).body(repository.save(postagem));
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
