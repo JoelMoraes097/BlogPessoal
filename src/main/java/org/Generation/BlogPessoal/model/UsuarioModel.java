@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuariomodel")
 public class UsuarioModel {
 	
 	@Id
@@ -27,6 +27,14 @@ public class UsuarioModel {
 	@NotNull
 	@Size(min= 4, max= 150)
 	private String senha;
+
+
+
+	
+
+	public UsuarioModel(String string, String string2, String string3) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public long getIdUsuario() {
 		return idUsuario;
@@ -59,4 +67,7 @@ public class UsuarioModel {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+
+
 }
