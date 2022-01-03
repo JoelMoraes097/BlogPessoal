@@ -2,7 +2,7 @@ package org.Generation.BlogPessoal.security;
 
 import java.util.Optional;
 
-import org.Generation.BlogPessoal.model.UsuarioModel;
+import org.Generation.BlogPessoal.model.Usuario;
 import org.Generation.BlogPessoal.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,18 +11,20 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailsServiceImplements implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private UsuarioRepository userRepository;
+	private @Autowired UsuarioRepository repository;
 
 	@Override
-	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		Optional<UsuarioModel> user = userRepository.findByUsuario(userName);
-		user.orElseThrow(() -> new UsernameNotFoundException(userName + " not found."));
+		Optional<Usuario> optional = repository.findByUsuario(username);
 
-		return user.map(UserDetailsImplements::new).get();
+		if (optional.isPresent()) {
+			return new UserDetailImplements(optional.get());
+		} else {
+			throw new UsernameNotFoundException("Usuario não existe");
+		}
 	}
-	
+
 }

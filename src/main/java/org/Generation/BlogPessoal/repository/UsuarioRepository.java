@@ -1,15 +1,16 @@
 package org.Generation.BlogPessoal.repository;
 
+import java.util.List;
 import java.util.Optional;
 
-import org.Generation.BlogPessoal.model.UsuarioModel;
+import org.Generation.BlogPessoal.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long>{
-	public Optional<UsuarioModel> findByUsuario(String username);
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
+	public Optional<Usuario> findByUsuario(String username);
 
-	public Optional<UsuarioModel> findByNome(String string);
+	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
 
 }

@@ -2,15 +2,33 @@ package org.Generation.BlogPessoal.model;
 
 public class UsuarioLogin {
 
+	private long id;
+
 	private String nome;
-	
+
 	private String usuario;
-	
+
+	private String foto;
+
 	private String senha;
-	
-	private String token; 
 
+	private String token;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	public UsuarioLogin(String string, String string2, String string3, String string4) {
 		// TODO Auto-generated constructor stub
