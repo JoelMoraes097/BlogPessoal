@@ -1,13 +1,13 @@
-package org.Generation.BlogPessoal.security;
+package org.generation.BlogPessoal.security;
 
 import java.util.Collection;
 import java.util.List;
 
-import org.Generation.BlogPessoal.model.Usuario;
+import org.generation.BlogPessoal.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserDetailImplements implements UserDetails {
+public class UserDetailsImplements implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
 
@@ -15,8 +15,8 @@ public class UserDetailImplements implements UserDetails {
 	private String password;
 	private List<GrantedAuthority> authorities;
 
-	public UserDetailImplements(Usuario user) {
-		this.userName = user.getUsuario();
+	public UserDetailsImplements(Usuario user) {
+		this.userName= user.getUsuario();
 		this.password = user.getSenha();
 	}
 
@@ -61,5 +61,4 @@ public class UserDetailImplements implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
-
-}
+} 

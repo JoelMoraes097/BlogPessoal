@@ -1,4 +1,4 @@
-package org.Generation.BlogPessoal.model;
+package org.generation.BlogPessoal.model;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_tema")
+@Table(name = "tb_temas")
 public class Tema {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,11 +28,13 @@ public class Tema {
 	@JsonIgnoreProperties("tema")
 	private List<Postagem> postagem;
 
-	public long getId() {
+	//Getters and Setters 
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

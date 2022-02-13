@@ -1,4 +1,4 @@
-package org.Generation.BlogPessoal.security;
+package org.generation.BlogPessoal.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,9 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
+public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
-	private @Autowired UserDetailsServiceImpl service;
+	private @Autowired UserDetailsServiceImplements service;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -33,13 +33,18 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+		        .antMatchers("/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/usuarios/cadastrar").permitAll()
 				.antMatchers(HttpMethod.POST, "/usuarios/logar").permitAll()
+				.antMatchers(HttpMethod.POST, "/postagens").permitAll()
+				.antMatchers(HttpMethod.GET, "/postagens").permitAll()
+				.antMatchers(HttpMethod.POST, "/tema").permitAll() 
+				.antMatchers(HttpMethod.GET, "/tema").permitAll() 
 				.anyRequest().authenticated()
 			.and().httpBasic()
 			.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and().cors()
 			.and().csrf().disable();
 	}
-
 }
+

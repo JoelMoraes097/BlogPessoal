@@ -1,8 +1,8 @@
-package org.Generation.BlogPessoal.model;
+package org.generation.BlogPessoal.model;
 
 public class UsuarioLogin {
 
-	private long id;
+	private Long id;
 
 	private String nome;
 
@@ -13,6 +13,10 @@ public class UsuarioLogin {
 	private String senha;
 
 	private String token;
+	
+	private String tipo;
+
+	//Getters and Setters
 
 	public long getId() {
 		return id;
@@ -20,18 +24,6 @@ public class UsuarioLogin {
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
-	public UsuarioLogin(String string, String string2, String string3, String string4) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getNome() {
@@ -46,6 +38,22 @@ public class UsuarioLogin {
 		return usuario;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
@@ -58,11 +66,11 @@ public class UsuarioLogin {
 		this.senha = senha;
 	}
 
-	public String getToken() {
-		return token;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setToken(String token) {
-		this.token = token;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 }

@@ -1,12 +1,12 @@
-package org.Generation.BlogPessoal.service;
+package org.generation.BlogPessoal.service;
 
 import java.nio.charset.Charset;
 import java.util.Optional;
 
-import org.Generation.BlogPessoal.model.Usuario;
-import org.Generation.BlogPessoal.model.UsuarioLogin;
-import org.Generation.BlogPessoal.repository.UsuarioRepository;
 import org.apache.commons.codec.binary.Base64;
+import org.generation.BlogPessoal.model.UsuarioLogin;
+import org.generation.BlogPessoal.model.Usuario;
+import org.generation.BlogPessoal.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -47,6 +47,7 @@ public class UsuarioService {
 				usuarioLogin.get().setNome(usuario.get().getNome());
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
+				usuarioLogin.get().setTipo(usuario.get().getTipo());
 				usuarioLogin.get().setToken(generatorBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
 				return usuarioLogin;
 			}
@@ -71,5 +72,4 @@ public class UsuarioService {
 		byte[] structureBase64 = Base64.encodeBase64(structure.getBytes(Charset.forName("US-ASCII")));
 		return "Basic " + new String(structureBase64);
 	}
-
 }
